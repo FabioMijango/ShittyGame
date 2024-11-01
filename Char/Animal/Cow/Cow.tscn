@@ -1,0 +1,72 @@
+[gd_scene load_steps=9 format=3 uid="uid://5iv6r4rpjw6s"]
+
+[ext_resource type="Texture2D" uid="uid://de8a8vvg0wrs8" path="res://src/Animals/Cow/Cow.png" id="1_5glih"]
+[ext_resource type="Script" path="res://Char/Animal/Cow/cow.gd" id="1_cpupr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gsqmp"]
+atlas = ExtResource("1_5glih")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ul7mu"]
+atlas = ExtResource("1_5glih")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ddfb"]
+atlas = ExtResource("1_5glih")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1gv2"]
+atlas = ExtResource("1_5glih")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h5uei"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gsqmp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ul7mu")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ddfb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1gv2")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tsu1e"]
+size = Vector2(25, 22)
+
+[node name="Cow" type="CharacterBody2D"]
+collision_layer = 64
+script = ExtResource("1_cpupr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_h5uei")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_tsu1e")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 5.0
+target_desired_distance = 5.0
+path_postprocessing = 1
+debug_enabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

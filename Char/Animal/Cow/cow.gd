@@ -1,4 +1,4 @@
-class_name Animals extends CharacterBody2D
+extends CharacterBody2D
 
 @onready var timer: Timer = $Timer
 @onready var Nav_Agent: NavigationAgent2D = $NavigationAgent2D
@@ -33,10 +33,10 @@ func _physics_process(_delta: float) -> void:
 	
 	move_and_slide()
 
-
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 	velocity = safe_velocity
 
 func _on_timer_timeout() -> void:
-	new_pos = Vector2(rng.randf_range(position.x + 150, position.x -150), rng.randf_range(position.y + 150, position.y -150))
-	Nav_Agent.target_position = new_pos
+	if randf() > 0.5:
+		new_pos = Vector2(rng.randf_range(position.x + 150, position.x -150), rng.randf_range(position.y + 150, position.y -150))
+		Nav_Agent.target_position = new_pos

@@ -48,6 +48,7 @@ animations = [{
 size = Vector2(14, 14)
 
 [node name="Chicken" type="CharacterBody2D"]
+collision_layer = 64
 script = ExtResource("1_pwb53")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -63,13 +64,14 @@ shape = SubResource("RectangleShape2D_3kr7v")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 5.0
 target_desired_distance = 5.0
+path_max_distance = 200.0
 path_postprocessing = 1
 debug_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(0.799636, 0.189147, 0.139969, 1)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 7.0
 autostart = true
 
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
