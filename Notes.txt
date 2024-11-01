@@ -1,5 +1,7 @@
 # Notes
 Layer: #That where his hitbox is in, not where is reading
+	Terrain:
+		1
 	Player:
 		2-6
 	Friendly mobs:
