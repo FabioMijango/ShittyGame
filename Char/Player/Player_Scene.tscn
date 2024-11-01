@@ -396,8 +396,7 @@ script = ExtResource("1_pv1at")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -2)
 sprite_frames = SubResource("SpriteFrames_iliop")
-animation = &"attack_back"
-frame_progress = 0.00972482
+animation = &"idle_front"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 show_behind_parent = true

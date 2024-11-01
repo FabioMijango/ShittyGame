@@ -2,14 +2,14 @@ extends CharacterBody2D
 
 @onready var Sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-const SPEED = 300.0
+const SPEED = 150.0
 
 var direction: Vector2
 var lookingTo: String = "front"
 
 func _physics_process(_delta: float) -> void:
 	
-	direction = Input.get_vector("left", "right", "down", "up")
+	direction = Input.get_vector("left", "right", "up", "down")
 	
 	movement()
 	update_animation()
@@ -40,9 +40,9 @@ func update_animation() -> void:
 		Sprite.play("walk_side")
 		Sprite.flip_h = direction.x < 0
 	# Verify if the player is moving in Y
-	elif direction.y > 0:
+	elif direction.y < 0:
 		lookingTo = "back"
 		Sprite.play("walk_back")
-	elif direction.y < 0:
+	elif direction.y > 0:
 		lookingTo = "front"
 		Sprite.play("walk_front")
