@@ -387,8 +387,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7vqhv"]
-size = Vector2(15.5, 20)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sc3nv"]
+size = Vector2(15, 18)
 
 [node name="PlayerScene" type="CharacterBody2D"]
 collision_layer = 2
@@ -399,10 +399,10 @@ position = Vector2(0, -2)
 sprite_frames = SubResource("SpriteFrames_iliop")
 animation = &"idle_front"
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+show_behind_parent = true
+position = Vector2(0.5, -1)
+shape = SubResource("RectangleShape2D_sc3nv")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-light_mask = 2
-position = Vector2(0.25, -3)
-shape = SubResource("RectangleShape2D_7vqhv")

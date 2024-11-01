@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://ctdhfveb0vcrx"]
+[gd_scene load_steps=10 format=4 uid="uid://ctdhfveb0vcrx"]
 
 [ext_resource type="Texture2D" uid="uid://clrnkn41b4fw8" path="res://src/Tiles/seasonal sample (autumn).png" id="1_7r6ki"]
 [ext_resource type="PackedScene" uid="uid://clb07mjydh0uj" path="res://Char/Player/Player_Scene.tscn" id="2_8ws4b"]
 [ext_resource type="Script" path="res://Desing/World/pathScript.gd" id="2_nyx6k"]
 [ext_resource type="PackedScene" uid="uid://47a06i8we4ip" path="res://Char/Animal/Chicken/Chicken.tscn" id="3_xgp87"]
+[ext_resource type="PackedScene" uid="uid://5iv6r4rpjw6s" path="res://Char/Animal/Cow/Cow.tscn" id="5_sauax"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_f0ta1"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -142,7 +143,7 @@ texture = ExtResource("1_7r6ki")
 1:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7.99915, -15.9983, 7.91076, -15.9983, 7.91076, 16.1751, -8.17592, 16.2635)
 2:8/size_in_atlas = Vector2i(2, 2)
 2:8/0 = 0
-2:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-15.9541, -16.0867, 15.6889, -16.1751, 16.1309, 16.1751, -15.9541, 16.0867)
+2:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-15.9983, -0.176777, 15.9099, -0.441942, 16.1309, 16.1751, -15.9541, 16.0867)
 4:8/0 = 0
 4:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:9/0 = 0
@@ -321,6 +322,9 @@ tile_map_data = PackedByteArray("AADu/wQAAAACAAgAAADv//z/AAACAAgAAAD0/wEAAAAEAAg
 tile_set = SubResource("TileSet_cmnox")
 
 [node name="PlayerScene" parent="." instance=ExtResource("2_8ws4b")]
+collision_layer = 2
 
 [node name="Chicken" parent="." instance=ExtResource("3_xgp87")]
-position = Vector2(-74, 28)
+
+[node name="Cow" parent="." instance=ExtResource("5_sauax")]
+position = Vector2(-47, 22)
