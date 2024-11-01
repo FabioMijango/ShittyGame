@@ -30,7 +30,6 @@ func _physics_process(_delta: float) -> void:
 	
 	Sprite.play("walk")
 	Sprite.flip_h = velocity.x > 0
-
 	
 	move_and_slide()
 

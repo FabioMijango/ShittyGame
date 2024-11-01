@@ -1,0 +1,8 @@
+# Notes
+Layer: #That where his hitbox is in, not where is reading
+	Player:
+		2-6
+	Friendly mobs:
+		7-10
+	Hostile mobs:
+		11-14
