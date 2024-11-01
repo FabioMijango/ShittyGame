@@ -139,10 +139,10 @@ texture = ExtResource("1_7r6ki")
 1:8/size_in_atlas = Vector2i(1, 2)
 1:8/0 = 0
 1:8/0/z_index = 1
-1:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 1.01647, 8, 1.01647, 8.125, 16, -8, 16.125)
+1:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7.99915, -15.9983, 7.91076, -15.9983, 7.91076, 16.1751, -8.17592, 16.2635)
 2:8/size_in_atlas = Vector2i(2, 2)
 2:8/0 = 0
-2:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 1.01647, 8, 1.01647, 8.125, 16, -8, 16.125)
+2:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-15.9541, -16.0867, 15.6889, -16.1751, 16.1309, 16.1751, -15.9541, 16.0867)
 4:8/0 = 0
 4:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:9/0 = 0
@@ -317,9 +317,6 @@ tile_set = SubResource("TileSet_cmnox")
 script = ExtResource("2_nyx6k")
 
 [node name="Decoration" type="TileMapLayer" parent="Tiles"]
-tile_set = SubResource("TileSet_cmnox")
-
-[node name="Path" type="TileMapLayer" parent="Tiles"]
 tile_map_data = PackedByteArray("AADu/wQAAAACAAgAAADv//z/AAACAAgAAAD0/wEAAAAEAAgAAAD0/wMAAAAEAAYAAAD1/wIAAAAAAAgAAAD2//r/AAAEAAcAAAD3//r/AAAAAAgAAAD7//f/AAAEAAcAAAD7/wQAAAACAAgAAAD///j/AAACAAgAAAAKAAEAAAAEAAgAAAAOAAQAAAAEAAYAAAAPAAcAAAAEAAkAAAAUAAMAAAAAAAkAAAAUAAYAAAAEAAcAAAAVAPz/AAAEAAkAAAAWAAAAAAAEAAkAAAA=")
 tile_set = SubResource("TileSet_cmnox")
 
