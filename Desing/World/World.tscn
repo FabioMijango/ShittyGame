@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=4 uid="uid://ctdhfveb0vcrx"]
+[gd_scene load_steps=11 format=4 uid="uid://ctdhfveb0vcrx"]
 
 [ext_resource type="Texture2D" uid="uid://clrnkn41b4fw8" path="res://src/Tiles/seasonal sample (autumn).png" id="1_7r6ki"]
 [ext_resource type="PackedScene" uid="uid://clb07mjydh0uj" path="res://Char/Player/Player_Scene.tscn" id="2_8ws4b"]
 [ext_resource type="Script" path="res://Desing/World/pathScript.gd" id="2_nyx6k"]
 [ext_resource type="PackedScene" uid="uid://47a06i8we4ip" path="res://Char/Animal/Chicken/Chicken.tscn" id="3_xgp87"]
+[ext_resource type="PackedScene" uid="uid://cbsfxmq002dbt" path="res://GUI/Healt_Bar.tscn" id="4_688c1"]
 [ext_resource type="PackedScene" uid="uid://5iv6r4rpjw6s" path="res://Char/Animal/Cow/Cow.tscn" id="5_sauax"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_f0ta1"]
@@ -323,7 +324,14 @@ tile_set = SubResource("TileSet_cmnox")
 
 [node name="PlayerScene" parent="." instance=ExtResource("2_8ws4b")]
 
+[node name="Healt_Bar" parent="PlayerScene" instance=ExtResource("4_688c1")]
+offset_left = -140.0
+offset_top = -77.0
+offset_right = -140.0
+offset_bottom = -77.0
+
 [node name="Chicken" parent="." instance=ExtResource("3_xgp87")]
+position = Vector2(63, 47)
 
 [node name="Cow" parent="." instance=ExtResource("5_sauax")]
 position = Vector2(-47, 22)

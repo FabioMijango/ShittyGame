@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyrehhwsytj18"]
+
+[ext_resource type="Texture2D" uid="uid://cv5wrqs03klix" path="res://src/Player/minecraft-heart.png" id="1_ukpmh"]
+
+[node name="Sprite2D" type="Sprite2D"]
+texture = ExtResource("1_ukpmh")

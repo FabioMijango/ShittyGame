@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbsfxmq002dbt"]
+
+[ext_resource type="Script" path="res://GUI/healt_bar.gd" id="1_yv0k5"]
+
+[node name="Healt_Bar" type="Container"]
+script = ExtResource("1_yv0k5")

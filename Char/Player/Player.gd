@@ -5,6 +5,8 @@ extends CharacterBody2D
 
 const SPEED = 150.0
 
+var Healt: int = 7
+
 var direction: Vector2
 var lookingTo: String = "front"
 var doing_action: bool = false
@@ -59,3 +61,7 @@ func do_action() -> void:
 
 func _on_action_timer_timeout() -> void:
 	doing_action = false
+
+func get_healt() -> int:
+	return Healt
+	
