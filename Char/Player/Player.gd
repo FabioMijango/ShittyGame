@@ -64,6 +64,7 @@ func update_animation(direction: Vector2) -> void:
 
 func do_action() -> void:
 	Sprite.play("attack_" + lookingTo)
+	#TODO add more logic when need
 
 func _on_action_timer_timeout() -> void:
 	state = STATES.WALK
