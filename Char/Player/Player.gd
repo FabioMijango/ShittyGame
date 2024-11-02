@@ -1,74 +1,45 @@
 extends CharacterBody2D
+class_name Player
+
+var direction: Vector2 = Vector2.ZERO
+var cardinal_direction: Vector2 = Vector2.ZERO
 
 @onready var Sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var action_timer: Timer = $actionTimer
+@onready var state_machine: PlayerStateMachine = $StateMachine
 
-enum STATES {
-	IDLE, WALK, ACTION
-}
+func _ready() -> void:
+	state_machine.Initialize(self)
 
-const SPEED: int = 150
+func _process(delta: float) -> void:
+	direction = Input.get_vector("left", "right", "up", "down")
+	pass
 
-var state: int = STATES.IDLE
-var Healt: int = 4
-
-var lookingTo: String = "front"
-
-func _physics_process(_delta: float) -> void:
-	var direction: Vector2 = Input.get_vector("left", "right", "up", "down")
-	
-	# State handling
-	state_Transition(direction)
-	perform_State_Action(direction)
-
-func state_Transition(direction: Vector2):
-	if !isState(STATES.ACTION):
-		if direction != Vector2.ZERO:
-			state = STATES.WALK
-		else:
-			state = STATES.IDLE
-		
-	if Input.is_action_just_pressed("action"):
-		state = STATES.ACTION
-		action_timer.start()
-
-func isState(STATE: int) -> bool:
-	return state == STATE
-
-func perform_State_Action(direction: Vector2):
-	
-	if !isState(STATES.ACTION):
-		movement(direction)
-		update_animation(direction)
-	elif isState(STATES.ACTION) and !action_timer.is_stopped():
-		do_action()
-
-
-func movement(direction: Vector2) -> void:
-	velocity = direction * SPEED
-
-	move_and_slide()
-
-func update_animation(direction: Vector2) -> void:
+func Set_Direction() -> bool:
+	var new_dir: Vector2 = cardinal_direction
 	if direction == Vector2.ZERO:
-		Sprite.play("idle_" + lookingTo)
-	else:
-		if direction.x != 0:
-			lookingTo = "side"
-			Sprite.flip_h = direction.x < 0
-		elif direction.y < 0:
-			lookingTo = "back"
-		elif direction.y > 0:
-			lookingTo = "front"
-		Sprite.play("walk_" + lookingTo)
-
-func do_action() -> void:
-	Sprite.play("attack_" + lookingTo)
-	#TODO add more logic when need
-
-func _on_action_timer_timeout() -> void:
-	state = STATES.WALK
-
-func get_healt() -> int:
-	return Healt
+		return false
 	
+	if direction.y == 0:
+		new_dir = Vector2.LEFT if direction.x < 0 else Vector2.RIGHT
+	elif direction.x == 0:
+		new_dir = Vector2.UP if direction.y < 0 else Vector2.DOWN
+	
+	if new_dir == cardinal_direction:
+		return false
+
+	cardinal_direction = new_dir
+	Sprite.scale.x = -1 if cardinal_direction == Vector2.LEFT else 1
+	
+	return true;
+	
+func Update_Animation(state: String) -> void:
+	Sprite.play(state + "_" + AnimDirection())
+	pass
+
+func AnimDirection() -> String:
+	if cardinal_direction == Vector2.DOWN:
+		return "front"
+	elif cardinal_direction == Vector2.UP:
+		return "back"
+	else:
+		return "side"

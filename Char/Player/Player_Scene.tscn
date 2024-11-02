@@ -1,7 +1,10 @@
-[gd_scene load_steps=53 format=3 uid="uid://clb07mjydh0uj"]
+[gd_scene load_steps=56 format=3 uid="uid://clb07mjydh0uj"]
 
 [ext_resource type="Script" path="res://Char/Player/Player.gd" id="1_pv1at"]
 [ext_resource type="Texture2D" uid="uid://bkthwqbivnty7" path="res://src/Player/Player.png" id="2_sqe1l"]
+[ext_resource type="Script" path="res://Char/Player/PlayerSM.gd" id="3_rqrjb"]
+[ext_resource type="Script" path="res://Char/Player/States/state_idle.gd" id="4_5xt0c"]
+[ext_resource type="Script" path="res://Char/Player/States/state_walk.gd" id="5_kldff"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5uwd0"]
 atlas = ExtResource("2_sqe1l")
@@ -408,8 +411,11 @@ shape = SubResource("RectangleShape2D_sc3nv")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
 
-[node name="actionTimer" type="Timer" parent="."]
-wait_time = 0.5
-one_shot = true
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("3_rqrjb")
 
-[connection signal="timeout" from="actionTimer" to="." method="_on_action_timer_timeout"]
+[node name="idle" type="Node" parent="StateMachine"]
+script = ExtResource("4_5xt0c")
+
+[node name="walk" type="Node" parent="StateMachine"]
+script = ExtResource("5_kldff")
