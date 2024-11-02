@@ -1,7 +1,5 @@
 extends Node
 
-signal update_Healt
-
 var Healt: Array = []
 var heart: PackedScene = preload("res://GUI/Heart.tscn")
 

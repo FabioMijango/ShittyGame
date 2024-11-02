@@ -3,64 +3,70 @@ extends CharacterBody2D
 @onready var Sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var action_timer: Timer = $actionTimer
 
-const SPEED = 150.0
+enum STATES {
+	IDLE, WALK, ACTION
+}
 
-var Healt: int = 7
+const SPEED: int = 150
 
-var direction: Vector2
+var state: int = STATES.IDLE
+var Healt: int = 4
+
 var lookingTo: String = "front"
-var doing_action: bool = false
 
 func _physics_process(_delta: float) -> void:
+	var direction: Vector2 = Input.get_vector("left", "right", "up", "down")
 	
-	direction = Input.get_vector("left", "right", "up", "down")
-	
-	# Update sprites
-	if !doing_action:
-		movement()
-		update_animation()
+	# State handling
+	state_Transition(direction)
+	perform_State_Action(direction)
+
+func state_Transition(direction: Vector2):
+	if !isState(STATES.ACTION):
+		if direction != Vector2.ZERO:
+			state = STATES.WALK
+		else:
+			state = STATES.IDLE
+		
 	if Input.is_action_just_pressed("action"):
+		state = STATES.ACTION
+		action_timer.start()
+
+func isState(STATE: int) -> bool:
+	return state == STATE
+
+func perform_State_Action(direction: Vector2):
+	
+	if !isState(STATES.ACTION):
+		movement(direction)
+		update_animation(direction)
+	elif isState(STATES.ACTION) and !action_timer.is_stopped():
 		do_action()
 
-func movement() -> void:
-   # Verify if there's movement in X
-	if direction.x != 0:
-		velocity.x = direction.x * SPEED
-	else:
-		velocity.x = 0
 
-	# Verify if there's movement in Y
-	if direction.y != 0:
-		velocity.y = direction.y * SPEED
-	else:
-		velocity.y = 0
+func movement(direction: Vector2) -> void:
+	velocity = direction * SPEED
 
 	move_and_slide()
 
-func update_animation() -> void:
-	# Verify if the player is moving in any direction
+func update_animation(direction: Vector2) -> void:
 	if direction == Vector2.ZERO:
 		Sprite.play("idle_" + lookingTo)
-	# Verify if the player is moving in X
-	elif direction.x != 0:
-		lookingTo = "side"
-		Sprite.play("walk_side")
-		Sprite.flip_h = direction.x < 0
-	# Verify if the player is moving in Y
-	elif direction.y < 0:
-		lookingTo = "back"
-		Sprite.play("walk_back")
-	elif direction.y > 0:
-		lookingTo = "front"
-		Sprite.play("walk_front")
+	else:
+		if direction.x != 0:
+			lookingTo = "side"
+			Sprite.flip_h = direction.x < 0
+		elif direction.y < 0:
+			lookingTo = "back"
+		elif direction.y > 0:
+			lookingTo = "front"
+		Sprite.play("walk_" + lookingTo)
 
 func do_action() -> void:
-	doing_action = true
 	Sprite.play("attack_" + lookingTo)
-	action_timer.start()
 
 func _on_action_timer_timeout() -> void:
-	doing_action = false
+	state = STATES.WALK
 
 func get_healt() -> int:
 	return Healt
