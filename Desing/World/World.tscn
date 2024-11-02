@@ -322,7 +322,6 @@ tile_map_data = PackedByteArray("AADu/wQAAAACAAgAAADv//z/AAACAAgAAAD0/wEAAAAEAAg
 tile_set = SubResource("TileSet_cmnox")
 
 [node name="PlayerScene" parent="." instance=ExtResource("2_8ws4b")]
-collision_layer = 2
 
 [node name="Chicken" parent="." instance=ExtResource("3_xgp87")]
 

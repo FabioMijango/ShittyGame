@@ -397,7 +397,8 @@ script = ExtResource("1_pv1at")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -2)
 sprite_frames = SubResource("SpriteFrames_iliop")
-animation = &"idle_front"
+animation = &"attack_back"
+frame_progress = 0.217905
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 show_behind_parent = true
@@ -406,3 +407,9 @@ shape = SubResource("RectangleShape2D_sc3nv")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
+
+[node name="actionTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="actionTimer" to="." method="_on_action_timer_timeout"]

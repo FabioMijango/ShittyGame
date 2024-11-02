@@ -1,19 +1,24 @@
 extends CharacterBody2D
 
 @onready var Sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var action_timer: Timer = $actionTimer
 
 const SPEED = 150.0
 
 var direction: Vector2
 var lookingTo: String = "front"
+var doing_action: bool = false
 
 func _physics_process(_delta: float) -> void:
 	
 	direction = Input.get_vector("left", "right", "up", "down")
 	
-	movement()
-	update_animation()
-	
+	# Update sprites
+	if !doing_action:
+		movement()
+		update_animation()
+	if Input.is_action_just_pressed("action"):
+		do_action()
 
 func movement() -> void:
    # Verify if there's movement in X
@@ -46,3 +51,11 @@ func update_animation() -> void:
 	elif direction.y > 0:
 		lookingTo = "front"
 		Sprite.play("walk_front")
+
+func do_action() -> void:
+	doing_action = true
+	Sprite.play("attack_" + lookingTo)
+	action_timer.start()
+
+func _on_action_timer_timeout() -> void:
+	doing_action = false
