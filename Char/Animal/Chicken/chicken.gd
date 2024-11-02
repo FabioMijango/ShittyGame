@@ -10,6 +10,7 @@ var rng = RandomNumberGenerator.new()
 var new_pos: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
+	await get_tree().create_timer(0.5).timeout
 	new_pos = Vector2(rng.randf_range(position.x + 150, position.x -150), rng.randf_range(position.y + 150, position.y -150))
 	Nav_Agent.target_position = new_pos
 
