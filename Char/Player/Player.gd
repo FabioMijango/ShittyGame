@@ -5,7 +5,7 @@ extends CharacterBody2D
 
 const SPEED = 150.0
 
-var Healt: int = 7
+var Healt: int = 4
 
 var direction: Vector2
 var lookingTo: String = "front"
@@ -58,6 +58,7 @@ func do_action() -> void:
 	doing_action = true
 	Sprite.play("attack_" + lookingTo)
 	action_timer.start()
+	#TODO add more logic when need
 
 func _on_action_timer_timeout() -> void:
 	doing_action = false

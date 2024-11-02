@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Cute_Fantasy"
+config/name="ShittyGame"
 run/main_scene="res://Desing/World/World.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"

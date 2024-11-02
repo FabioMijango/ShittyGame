@@ -17,7 +17,7 @@ func _physics_process(_delta: float) -> void:
 	Sprite.play("idle")
 	
 	var Cur_Agent_Pos = global_position
-	var NextPath_Pos = Nav_Agent.get_next_path_position()
+	var NextPath_Pos = await Nav_Agent.get_next_path_position()
 	var new_Velocity = Cur_Agent_Pos.direction_to(NextPath_Pos) * SPEED
 	
 	if Nav_Agent.is_navigation_finished():
