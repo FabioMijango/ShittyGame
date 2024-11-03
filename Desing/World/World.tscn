@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://ctdhfveb0vcrx"]
+[gd_scene load_steps=12 format=4 uid="uid://ctdhfveb0vcrx"]
 
 [ext_resource type="Texture2D" uid="uid://clrnkn41b4fw8" path="res://src/Tiles/seasonal sample (autumn).png" id="1_7r6ki"]
 [ext_resource type="PackedScene" uid="uid://clb07mjydh0uj" path="res://Char/Player/Player_Scene.tscn" id="2_8ws4b"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://47a06i8we4ip" path="res://Char/Animal/Chicken/Chicken.tscn" id="3_xgp87"]
 [ext_resource type="PackedScene" uid="uid://cbsfxmq002dbt" path="res://GUI/Healt_Bar.tscn" id="4_688c1"]
 [ext_resource type="PackedScene" uid="uid://5iv6r4rpjw6s" path="res://Char/Animal/Cow/Cow.tscn" id="5_sauax"]
+[ext_resource type="PackedScene" uid="uid://djtt56ptba1rp" path="res://Char/Enemy/Slime/slime.tscn" id="7_s0r3m"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_f0ta1"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -335,3 +336,6 @@ position = Vector2(63, 47)
 
 [node name="Cow" parent="." instance=ExtResource("5_sauax")]
 position = Vector2(-47, 22)
+
+[node name="Slime" parent="." instance=ExtResource("7_s0r3m")]
+position = Vector2(117, -42)
