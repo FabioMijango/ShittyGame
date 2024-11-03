@@ -28,5 +28,4 @@ func Physics_Process(_delta: float) -> State:
 
 # Input in this State
 func HandleInput(_event: InputEvent) -> State:
-	#print(_event)
 	return null

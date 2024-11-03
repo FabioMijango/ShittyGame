@@ -1,14 +1,20 @@
 extends CharacterBody2D
 class_name Player
 
+#Player`s atributtes
 var direction: Vector2 = Vector2.ZERO
 var cardinal_direction: Vector2 = Vector2.ZERO
+var Healt: int = 5
 
 @onready var Sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var state_machine: PlayerStateMachine = $StateMachine
+@onready var Healt_Bar: Node = $Healt_Bar
 
 func _ready() -> void:
 	state_machine.Initialize(self)
+	
+	# For case when windows get resized
+	get_viewport().connect("size_changed", _on_viewport_resize)
 
 func _process(_delta: float) -> void:
 	direction = Input.get_vector("left", "right", "up", "down")
@@ -45,3 +51,12 @@ func AnimDirection() -> String:
 		return "back"
 	else:
 		return "side"
+
+
+# Signal`s function when window is resized
+func _on_viewport_resize():
+	var ratio: float = 8.228571428571429
+	var window_size: Vector2 = get_viewport().get_visible_rect().size
+	
+	Healt_Bar.change_Location(window_size, ratio)
+	pass

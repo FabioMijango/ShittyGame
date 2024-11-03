@@ -8,6 +8,9 @@ var TimeInit: int
 
 # When player enter state
 func Enter() -> void:
+	#TODO Change this to detect tool
+	# E.g: player.Update_Animation("pickaxe")
+	
 	player.Update_Animation("attack")
 	TimeInit = Time.get_ticks_msec()
 	pass
