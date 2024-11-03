@@ -2,15 +2,17 @@ extends CharacterBody2D
 class_name Enemy
 
 #Enemy`s atributtes
+const SPEED = 60
 var Healt: int = 5
 var cardinal_direction: Vector2 = Vector2.ZERO
+
 
 @onready var Sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var state_machine: EnemyStateMachine = $StateMachine
 @onready var Nav_Agent: NavigationAgent2D = $NavigationAgent2D
 
 func _ready() -> void:
-	print(self.name, "State Machine")
+	print(self.name, ". State Machine")
 	state_machine.Initialize(self)
 	pass
 

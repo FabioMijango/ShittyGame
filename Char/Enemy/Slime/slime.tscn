@@ -1,9 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://djtt56ptba1rp"]
+[gd_scene load_steps=24 format=3 uid="uid://djtt56ptba1rp"]
 
 [ext_resource type="Script" path="res://Char/Enemy/Slime/slime.gd" id="1_ppfbw"]
 [ext_resource type="Texture2D" uid="uid://r0a54hj6th1q" path="res://src/Enemies/Slime.png" id="1_wshps"]
 [ext_resource type="Script" path="res://Char/Enemy/EnemySM.gd" id="3_ethbn"]
 [ext_resource type="Script" path="res://Char/Enemy/EnemyStates/e_state_idle.gd" id="4_ij7eb"]
+[ext_resource type="Script" path="res://Char/Enemy/EnemyStates/e_state_patrol.gd" id="5_3v6ov"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kd3l5"]
 atlas = ExtResource("1_wshps")
@@ -140,7 +141,7 @@ script = ExtResource("1_ppfbw")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3l6w1")
 animation = &"die"
-frame_progress = 0.775241
+frame_progress = 0.0316126
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
@@ -160,6 +161,7 @@ script = ExtResource("3_ethbn")
 script = ExtResource("4_ij7eb")
 
 [node name="patrol" type="Node" parent="StateMachine"]
+script = ExtResource("5_3v6ov")
 
 [node name="attack" type="Node" parent="StateMachine"]
 

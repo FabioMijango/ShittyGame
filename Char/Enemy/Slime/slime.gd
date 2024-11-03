@@ -7,6 +7,5 @@ func _ready() -> void:
 	pass
 
 func Update_Animation(state: String) -> void:
-	print("Se actualiza")
 	Sprite.play(state)
 	pass
