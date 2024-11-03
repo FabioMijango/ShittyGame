@@ -10,7 +10,7 @@ var cardinal_direction: Vector2 = Vector2.ZERO
 func _ready() -> void:
 	state_machine.Initialize(self)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	direction = Input.get_vector("left", "right", "up", "down")
 	pass
 
@@ -31,11 +31,13 @@ func Set_Direction() -> bool:
 	Sprite.scale.x = -1 if cardinal_direction == Vector2.LEFT else 1
 	
 	return true;
-	
+
+# No need to modified
 func Update_Animation(state: String) -> void:
 	Sprite.play(state + "_" + AnimDirection())
 	pass
 
+# No need to modified
 func AnimDirection() -> String:
 	if cardinal_direction == Vector2.DOWN:
 		return "front"

@@ -1,10 +1,11 @@
-[gd_scene load_steps=56 format=3 uid="uid://clb07mjydh0uj"]
+[gd_scene load_steps=57 format=3 uid="uid://clb07mjydh0uj"]
 
 [ext_resource type="Script" path="res://Char/Player/Player.gd" id="1_pv1at"]
 [ext_resource type="Texture2D" uid="uid://bkthwqbivnty7" path="res://src/Player/Player.png" id="2_sqe1l"]
 [ext_resource type="Script" path="res://Char/Player/PlayerSM.gd" id="3_rqrjb"]
 [ext_resource type="Script" path="res://Char/Player/States/state_idle.gd" id="4_5xt0c"]
 [ext_resource type="Script" path="res://Char/Player/States/state_walk.gd" id="5_kldff"]
+[ext_resource type="Script" path="res://Char/Player/States/state_action.gd" id="6_evypk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5uwd0"]
 atlas = ExtResource("2_sqe1l")
@@ -419,3 +420,6 @@ script = ExtResource("4_5xt0c")
 
 [node name="walk" type="Node" parent="StateMachine"]
 script = ExtResource("5_kldff")
+
+[node name="action" type="Node" parent="StateMachine"]
+script = ExtResource("6_evypk")

@@ -2,6 +2,7 @@ extends State
 class_name State_Idle
 
 @onready var walk: Node = $"../walk"
+@onready var action: State_Action = $"../action"
 
 # When player enter state
 func Enter() -> void:
@@ -14,6 +15,8 @@ func Exit() -> void:
 
 # Process while State
 func Process(_delta: float) -> State:
+	if Input.is_action_just_pressed("action"):
+		return action
 	if player.direction != Vector2.ZERO:
 		return walk
 	player.velocity = Vector2.ZERO
@@ -25,4 +28,5 @@ func Physics_Process(_delta: float) -> State:
 
 # Input in this State
 func HandleInput(_event: InputEvent) -> State:
+	#print(_event)
 	return null

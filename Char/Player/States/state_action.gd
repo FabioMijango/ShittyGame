@@ -1,14 +1,15 @@
 extends State
-class_name State_Walk
+class_name State_Action
 
-const  SPEED: int = 150
-
+@onready var walk: Node = $"../walk"
 @onready var idle: State_Idle = $"../idle"
-@onready var action: State_Action = $"../action"
+
+var TimeInit: int
 
 # When player enter state
 func Enter() -> void:
-	player.Update_Animation("walk")
+	player.Update_Animation("attack")
+	TimeInit = Time.get_ticks_msec()
 	pass
 
 # When player exit state
@@ -17,18 +18,11 @@ func Exit() -> void:
 
 # Process while State
 func Process(_delta: float) -> State:
-	if Input.is_action_just_pressed("action"):
-		return action
-	
-	if player.direction == Vector2.ZERO:
+	if Time.get_ticks_msec() - TimeInit > 500:
+		if player.direction != Vector2.ZERO:
+			return walk
 		return idle
-	
-	player.velocity = player.direction * SPEED
-	if player.Set_Direction():
-		player.Update_Animation("walk")
-	
-	player.move_and_slide()
-	
+		
 	return null
 
 # Physics Process while State
@@ -37,4 +31,5 @@ func Physics_Process(_delta: float) -> State:
 
 # Input in this State
 func HandleInput(_event: InputEvent) -> State:
+	
 	return null
