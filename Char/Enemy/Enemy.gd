@@ -14,6 +14,9 @@ var cardinal_direction: Vector2 = Vector2.ZERO
 func _ready() -> void:
 	print(self.name, ". State Machine")
 	state_machine.Initialize(self)
+	
+	# Set method for Nav_Agent
+	Nav_Agent.path_postprocessing = NavigationPathQueryParameters2D.PATH_POSTPROCESSING_EDGECENTERED
 	pass
 
 # Not sure if this is needed

@@ -24,5 +24,6 @@ func Physics_Process(_delta: float) -> State_Enemy:
 	return null
 
 func setNav_Agent(_Nav_Agent: NavigationAgent2D)-> void:
-		self.Nav_agent = _Nav_Agent
-		pass
+	self.Nav_agent = _Nav_Agent
+	#print(Nav_agent.path_postprocessing)
+	pass
